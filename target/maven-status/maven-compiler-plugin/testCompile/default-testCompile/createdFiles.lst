@@ -1,0 +1,8 @@
+qa\com\utils\ExtentReportManager.class
+qa\com\testcases\DatabaseTest.class
+qa\com\pageObjects\LoginPage.class
+qa\com\pageObjects\DashboardPage.class
+qa\com\testcases\loginTest.class
+qa\com\general\WebDriverFactory.class
+qa\com\config\ConfigReader.class
+qa\com\pageObjects\homePage.class
