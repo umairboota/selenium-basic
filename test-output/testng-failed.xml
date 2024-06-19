@@ -5,9 +5,9 @@
     <classes>
       <class name="qa.com.testcases.TaskSixTest">
         <methods>
-          <include name="caseOne"/>
           <include name="setUp"/>
           <include name="tearDown"/>
+          <include name="caseTwo"/>
         </methods>
       </class> <!-- qa.com.testcases.TaskSixTest -->
     </classes>

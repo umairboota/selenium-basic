@@ -22,20 +22,19 @@ public class TaskSixTest {
         driver = WebDriverFactory.getInstance();
         configReader = new ConfigReader();
         homePage = new TaskSixHomePage(driver);
+        driver.get(configReader.getUrl());
     }
     
-    @Test(priority = 1)
-    public void caseOne() {
-        // Step 1: Go to the web URL
-        driver.get(configReader.getUrl());
+//    @Test(priority = 1)
+    public void caseOne() {        
         
-        // Step 2: Explore resources
+        // Explore resources
         homePage.exploreResources();
         
-        // Step 3: Click on Designing
+        // Click on Designing
         homePage.clickDesigning();
         
-        // Step 4: Click on Photos
+        // Click on Photos
         homePage.clickPhotos();
         
         // Assert: Verify headings
@@ -44,24 +43,23 @@ public class TaskSixTest {
         Assert.assertTrue(homePage.isAdvanceHeadingDisplayed());
     }
     
-//    @Test(priority = 2)
+    @Test(priority = 2)
     public void caseTwo() {
-        // Step 1: Go to the dashboard
-        driver.get(configReader.getUrl());
+       
         
-        // Step 2: Scroll down (if needed)
+        // Scroll down 
         homePage.scrollToStartLearning();
         
-        // Step 3: Click on Start Learning
+        // Click on Start Learning
         homePage.clickStartLearning();
         
-        // Step 4: Click on Programming
+        // Click on Programming
         homePage.clickProgramming();
         
-        // Step 5: Click on Java
+        // Click on Java
         homePage.clickJava();
         
-        // Step 6: Click on View more option on W3School
+        // Click on View more option on W3School
         homePage.clickViewMoreOnW3School();
         
         // Assert: Verify user lands to W3School page for Java tutorial
