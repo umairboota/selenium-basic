@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="qa.com.testcases.DatabaseTest">
+      <class name="qa.com.testcases.TaskSixTest">
         <methods>
-          <include name="closeDatabaseConnection"/>
-          <include name="setUpDatabaseConnection"/>
-          <include name="testDatabaseOperations"/>
+          <include name="caseOne"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- qa.com.testcases.DatabaseTest -->
+      </class> <!-- qa.com.testcases.TaskSixTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
