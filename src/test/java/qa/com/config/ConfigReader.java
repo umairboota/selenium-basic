@@ -7,7 +7,6 @@ import java.util.Properties;
 
 public class ConfigReader {
 	private Properties properties;
-//	private final String propertyFilePath = "Test/src/test/java/qa/com/config/config.properties";
 
 	public ConfigReader() {
 		properties = new Properties();
