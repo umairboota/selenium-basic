@@ -25,7 +25,7 @@ public class TaskSixTest {
         driver.get(configReader.getUrl());
     }
     
-//    @Test(priority = 1)
+    @Test(priority = 1)
     public void caseOne() {        
         
         // Explore resources
@@ -43,7 +43,7 @@ public class TaskSixTest {
         Assert.assertTrue(homePage.isAdvanceHeadingDisplayed());
     }
     
-    @Test(priority = 2)
+//    @Test(priority = 2)
     public void caseTwo() {
        
         
