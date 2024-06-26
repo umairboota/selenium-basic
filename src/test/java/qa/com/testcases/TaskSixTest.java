@@ -5,7 +5,9 @@ import java.awt.AWTException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import qa.com.config.ConfigReader;
 import qa.com.general.WebDriverFactory;
@@ -17,7 +19,7 @@ public class TaskSixTest {
     ConfigReader configReader;
     TaskSixHomePage homePage;
     
-    @BeforeClass
+    @BeforeTest
     public void setUp() throws AWTException {
         driver = WebDriverFactory.getInstance();
         configReader = new ConfigReader();
@@ -43,7 +45,7 @@ public class TaskSixTest {
         Assert.assertTrue(homePage.isAdvanceHeadingDisplayed());
     }
     
-//    @Test(priority = 2)
+    @Test(priority = 2)
     public void caseTwo() {
        
         
@@ -63,11 +65,12 @@ public class TaskSixTest {
         homePage.clickViewMoreOnW3School();
         
         // Assert: Verify user lands to W3School page for Java tutorial
-        String expectedTitle = "Java Tutorial - W3Schools";
-        Assert.assertEquals(driver.getTitle(), expectedTitle);
+        String expectedTitle = "Java Tutorial";
+        String actualTitle = driver.getTitle();
+        Assert.assertEquals(actualTitle, expectedTitle);
     }
     
-    @AfterClass
+    @AfterTest
     public void tearDown() {
         WebDriverFactory.finishDriver();
     }

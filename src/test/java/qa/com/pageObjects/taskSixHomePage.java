@@ -1,9 +1,12 @@
 package qa.com.pageObjects;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import java.time.Duration;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class TaskSixHomePage {
 
@@ -27,12 +30,13 @@ public class TaskSixHomePage {
 
 	public void clickPhotos() {
 
-		WebElement photosLink = driver.findElement(By.xpath("//button[@class='btn select-category-btn shadow-none' and normalize-space()='Photo']\r\n"));
+		WebElement photosLink = driver.findElement(
+				By.xpath("//button[@class='btn select-category-btn shadow-none' and normalize-space()='Photo']"));
 		photosLink.click();
 	}
 
 	public boolean isBeginnerHeadingDisplayed() {
-		
+
 		return driver.findElement(By.xpath("//h4[normalize-space()='Beginner']")).isDisplayed();
 	}
 
@@ -45,36 +49,42 @@ public class TaskSixHomePage {
 	}
 
 	public void scrollToStartLearning() {
-        // Implement logic to scroll to Start Learning section using JavaScriptExecutor
-        WebElement startLearningSection = driver.findElement(By.id("start-learning-section"));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", startLearningSection);
-    }
+		WebElement startLearningSection = driver.findElement(By.xpath("//div[@id='resourceReferenceBox']"));
 
-    // Method to click on the "Start Learning" button
-    public void clickStartLearning() {
-        // Implement logic to click on Start Learning button
-        WebElement startLearningButton = driver.findElement(By.id("start-learning-button"));
-        startLearningButton.click();
-    }
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", startLearningSection);
+	}
 
-    // Method to click on the "Programming" link
-    public void clickProgramming() {
-        // Implement logic to click on Programming link
-        WebElement programmingLink = driver.findElement(By.linkText("Programming"));
-        programmingLink.click();
-    }
+	public void clickStartLearning() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebElement startLearningButton = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[normalize-space()='START LEARNING']")));
+		startLearningButton.click();
+	}
 
-    // Method to click on the "Java" link
-    public void clickJava() {
-        // Implement logic to click on Java link
-        WebElement javaLink = driver.findElement(By.linkText("Java"));
-        javaLink.click();
-    }
+	public void clickProgramming() {
+		WebElement programmingLink = driver.findElement(By.xpath("//button[normalize-space()='Programming']"));
+		programmingLink.click();
+	}
 
-    // Method to click on the "View more" option on W3School link
-    public void clickViewMoreOnW3School() {
-        // Implement logic to click on View more option on W3School link
-        WebElement viewMoreLink = driver.findElement(By.xpath("//a[contains(text(), 'View more')]"));
-        viewMoreLink.click();
-    }
+	public void clickJava() {
+		WebElement javaLink = driver.findElement(By.xpath("//button[normalize-space()='Java']"));
+		javaLink.click();
+	}
+
+	public void clickViewMoreOnW3School() {
+		WebElement viewMoreLink = driver
+				.findElement(By.xpath("//h5[text()='W3Schools']/parent::div//a[text()='View More']"));
+
+		String url = viewMoreLink.getAttribute("href");
+
+		((JavascriptExecutor) driver).executeScript("window.open(arguments[0], '_blank');", url);
+
+		switchToNewTab();
+	}
+
+	private void switchToNewTab() {
+		for (String handle : driver.getWindowHandles()) {
+			driver.switchTo().window(handle);
+		}
+	}
 }
